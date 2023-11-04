@@ -24,31 +24,52 @@
                                     {% csrf_token %}
                                     <p class="text-center">Please create your account</p>
 
-                                    {% for message in messages %}
-                                    <p class="alert alert-danger text-center">{{message}} !!</p>
-                                    {% endfor %}
+                                    {% if messages %}
+                                    <ul class="alert alert-danger pl-4 small">
+                                        {% for message in messages %}
+                                        <li>{{message}} !!</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+
                                     <div class="form-outline mb-4">
                                         <label class="form-label fw-bold" for="form2Example11">Username</label>
                                         <input type="text" id="form2Example11" class="form-control" name="username"
-                                            placeholder="username" />
+                                            placeholder="username" required />
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label fw-bold" for="form2Example11">Email</label>
                                         <input type="email" id="form2Example11" class="form-control" name="email"
-                                            placeholder="email address" />
+                                            placeholder="email address" required />
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label fw-bold" for="form2Example22">Password</label>
-                                        <input type="password" name="password" id="form2Example22"
-                                            class="form-control" />
+                                        <input type="password" name="password" id="form2Example22" class="form-control"
+                                            required />
                                     </div>
+
+                                   
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label fw-bold" for="form2Example22">Confirm Password</label>
-                                        <input type="password" name="password2" id="form2Example22"
-                                            class="form-control" />
+                                        <input type="password" name="password2" id="form2Example22" class="form-control"
+                                            required />
+                                    </div>
+
+                                    <div class="small alert alert-info">
+                                        <p class="password-suggestions fw-bold">
+                                            Password Suggestions:
+                                        <ul>
+                                            <li>Minimum 8 characters</li>
+                                            <li>Include at least one uppercase letter (A-Z)</li>
+                                            <li>Include at least one lowercase letter (a-z)</li>
+                                            <li>Include at least one number (0-9)</li>
+                                            <li>Include at least one special character (@,!,=,...)</li>
+                                            <li>Avoid common words and personal information</li>
+                                        </ul>
+                                        </p>
                                     </div>
 
                                     <div class="text-center pt-1 mb-3 pb-1">
