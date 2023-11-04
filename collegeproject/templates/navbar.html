@@ -14,10 +14,15 @@
           <a class="nav-link" href="#">Pricing</a>
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </div>
-        <form class="d-flex" role="search">
+        <form class="d-flex  d-none d-md-block me-2" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
+
+          {% if request.user.is_authenticated %}
+          <a class="btn btn-outline-dark px-3" href="{% url 'logout' %}">Logout</a>
+          {% else %}
+          <a class="btn btn-outline-dark px-3" href="{% url 'signin' %}">Login</a>
+          {% endif %}
       </div>
     </div>
   </nav>

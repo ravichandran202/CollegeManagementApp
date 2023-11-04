@@ -21,26 +21,28 @@
                                     <h4 class="mt-1 mb-5 pb-1">MIT THANDAVAPURA</h4>
                                 </div>
 
-                                <form>
+                                <form method="post" action="{% url 'signin' %}">
+                                    {% csrf_token %}
                                     <p class="text-center">Please login to your account</p>
 
-                                    <p class="alert alert-danger text-center">Password are not matching !!</p>
+                                    {% for message in messages %}
+                                    <p class="alert alert-danger text-center">{{message}} !!</p>
+                                    {% endfor %}
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label fw-bold" for="form2Example11">Username</label>
-                                        <input type="text" id="form2Example11" class="form-control"
+                                        <input type="text" id="form2Example11" class="form-control" name="username"
                                             placeholder="your username" />
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label fw-bold" for="form2Example22">Password</label>
-                                        <input type="password" id="form2Example22" class="form-control" />
+                                        <input type="password" name="password" id="form2Example22"  class="form-control" />
                                     </div>
 
                                     <div class="text-center pt-1 mb-5 pb-1">
                                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 px-5"
-                                            type="button">Log
-                                            in</button><br>
+                                            type="submit">Login</button><br>
                                         <a class="text-muted" href="#!">Forgot password?</a>
                                     </div>
 
