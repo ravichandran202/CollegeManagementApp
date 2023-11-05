@@ -24,7 +24,7 @@ def is_valid_password(request,password):
 
     # Check if the password contains at least one lowercase letter (a-z)
     if not re.search(r'[a-z]', password):
-        messages.error(request, 'Password should Include at least one lowercase letter (A-Z)')
+        messages.error(request, 'Password should Include at least one lowercase letter (a-z)')
         is_valid = False
 
     # Check if the password contains at least one number (0-9)
@@ -47,7 +47,6 @@ def is_valid_password(request,password):
 
     # All criteria are met, the password is valid
     return is_valid
-
 
 def home_page(request):
     return render(request,"index.html")
@@ -96,3 +95,6 @@ def signup_page(request):
 def logout(request):
     auth.logout(request)
     return redirect('signin')
+
+def profile_page(request, id):
+    return render(request,"profile.html")
